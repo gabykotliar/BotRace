@@ -1,0 +1,103 @@
+﻿@model dynamic
+
+@{
+    ViewBag.Title = "Game";
+}
+
+<h2>Start new game</h2>
+
+<div class="row">
+    <div class="col-md-12" role="main">
+        <p class="lead">
+            Register all the bots that will be participating from the race
+        </p>
+        <form class="form-horizontal" role="form">
+            <fieldset>
+                <legend>Bots</legend>
+
+                <div class="form-group">
+                    <label class="col-md-2 control-label" for="url">Url</label>
+                    <div class="col-md-8">
+                        <input type="text" class="form-control" id="url" name="bots">
+                    </div>                    
+                </div>
+                <div class="form-group">
+                    <label class="col-md-2 control-label" for="url2">Url</label>
+                    <div class="col-md-8">
+                        <input type="text" class="form-control" id="url2" name="bots">
+                    </div>
+                    <div class="col-md-2">
+                        <button class="btn btn-sm btn-danger">Remove</button>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <button class="btn btn-default">
+                            <span class="glyphicon glyphicon-plus"></span> New bot
+                        </button>
+                    </div>
+                </div>
+
+            </fieldset>
+            
+            <fieldset>
+                <legend>Configuration</legend>
+
+                <div class="form-group">
+                    <label class="col-md-2 control-label" for="url">Maze Size</label>
+                    <div class="col-md-8">
+                        <input type="text" class="form-control" id="mazeSize" name="mazeSize" value="10">
+                    </div>                    
+                </div>                
+            </fieldset>
+            
+
+            <div class="control-group">
+                <div class="controls">
+                    <button id="start" class="btn btn-lg btn-primary">
+                        Race <span class="glyphicon glyphicon-play"></span>
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section scripts {
+
+    <script type="text/javascript">
+
+        function addBot() {
+        }
+
+        function removeBot() {
+
+        }
+
+        function start(event) {
+
+            var config = {
+                botUris: $.map($('[name=bots]'), function (i) { return i.value; }),
+                mazeSize: $('#mazeSize').val()
+            };
+
+            $.ajax('/api/game', {
+                type: 'POST',                
+                data: JSON.stringify(config),
+                contentType: 'application/json'                
+            });
+
+            event.preventDefault();
+
+            return false;
+        }
+
+        $(document).ready(function() {
+
+            document.getElementById('start').addEventListener('click', start);
+
+        });
+
+    </script>
+}

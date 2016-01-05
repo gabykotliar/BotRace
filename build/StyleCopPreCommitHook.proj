@@ -1,0 +1,30 @@
+<Project ToolsVersion="4.0" DefaultTargets="Default" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath64)\ExtensionPack\4.0\MSBuild.ExtensionPack.tasks"/>
+  <ItemGroup>
+    <MyTextFile Include="../../_to_check.txt"/>
+  </ItemGroup>
+  <Target Name="Default"> 
+    <!-- Create a collection of files to scan -->
+    <ReadLinesFromFile File="@(MyTextFile)" >
+      <Output TaskParameter="Lines" ItemName="ItemsFromFile"/>
+    </ReadLinesFromFile>
+
+    <!-- Run the StyleCop MSBuild task -->
+    <MSBuild.ExtensionPack.CodeQuality.StyleCop TaskAction="Scan" SourceFiles="@(ItemsFromFile)" 
+    ShowOutput="false" 
+    ForceFullAnalysis="true" 
+    CacheResults="false"
+    logFile="..\..\..\StyleCopLog.txt" 
+    SettingsFile="../../Settings.StyleCop">
+      <Output TaskParameter="Succeeded" PropertyName="AllPassed"/>
+      <Output TaskParameter="ViolationCount" PropertyName="Violations"/>
+      <Output TaskParameter="FailedFiles" ItemName="Failures"/>
+    </MSBuild.ExtensionPack.CodeQuality.StyleCop>
+    <Message Text="Succeeded: $(AllPassed), Violations: $(Violations)" Importance="high"/>
+    <Message Text="StyleCop Errors:" Importance="high" Condition="$(AllPassed) == false"/>
+    <Message Text="%(Failures.Identity) - Failed on Line %(Failures.LineNumber). %(Failures.CheckId): %(Failures.Message)" Importance="high" Condition="$(AllPassed) == false"/>
+    <Error Text=" The project is invalid due to stylecop issues."
+           Condition="$(AllPassed) == false" />
+  </Target>
+  
+</Project>

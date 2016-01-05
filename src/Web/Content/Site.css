@@ -1,0 +1,42 @@
+﻿body {
+    padding-top: 50px;
+    padding-bottom: 20px;
+}
+
+/* Set padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* Override the default bootstrap behavior where horizontal description lists 
+   will truncate terms that are too long to fit in the left column 
+*/
+.dl-horizontal dt {
+    white-space: normal;
+}
+
+/* mazes */
+
+.maze {
+    border: solid orange 2px;
+}
+
+.maze td {
+        width: 40px;
+        height: 40px;
+        text-align: center
+    }
+
+.maze td:first-child { color: orange; }
+.maze td:last-child  { color: limegreen; }
+
+.closed    { border:        solid orange 1px; }
+.northWall { border-top:    solid orange 1px; }
+.eastWall  { border-right:  solid orange 1px; }
+.southWall { border-bottom: solid orange 1px; }
+.westWall  { border-left:   solid orange 1px; }
+
+/* bootstrap */
+
+.btn-toolbar { margin-top: 10px }

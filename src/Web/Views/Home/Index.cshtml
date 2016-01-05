@@ -1,0 +1,30 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+<div class="jumbotron">
+    <h1>Bot Race</h1>
+    <p class="lead">Get your bot ready to race against others through intrincated mazes.</p>
+    <p><a href="@Url.Action("Index", "Game")" class="btn btn-primary btn-lg">Start a game &raquo;</a></p>
+</div>
+
+<div class="row">
+    <div class="col-md-4">
+        <h2>Getting started</h2>
+        <p>
+            Create a piece of code that is capable of solving a maze, you can do this in whichever language you like the most.
+            Get your code exposed as a service, register it and get ready to see if your maze solver can get to the exit faster than others.
+        </p>
+        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
+    </div>
+    <div class="col-md-4">
+        <h2>Mazes</h2>
+        <p>Get a pick at the kind of mazes you can face and the maze generation algorithms used to create them.</p>
+        <p><a class="btn btn-default" href="~/Maze">Learn more &raquo;</a></p>
+    </div>
+    <div class="col-md-4">
+        <h2>Interfaces</h2>
+        <p>In here you will find all the documentation that you need to create your own Bot, like interfaces, protocols, etc.</p>
+        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
+    </div>
+</div>

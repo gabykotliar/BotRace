@@ -1,0 +1,77 @@
+﻿@model dynamic
+
+@{
+    ViewBag.Title = "Recursive Backtracking";
+    var mazeSize = 10;
+}
+
+<div class="row">
+    <div class="col-md-12" role="main">
+        <h2>Recursive Backtracking</h2>
+
+        <div class="row">
+            <div class="col-md-12">
+                <table id="recursiveBacktrackingMaze" class="maze">
+                    @for (int i = 0; i < mazeSize; i++)
+                    {
+                        <tr>
+                            @for (int j = 0; j < mazeSize; j++)
+                            {
+                                <td class="closed"></td>
+                            }
+                        </tr>
+                    }
+                </table>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12 btn-toolbar" role="toolbar">
+                <button onclick="carveMaze('#recursiveBacktrackingMaze');" class="btn btn-default">Refresh</button>
+            </div>
+        </div>
+        
+    </div>
+</div>
+
+
+@section scripts {
+
+<script type="text/javascript">
+
+function carveMaze(maze) {
+    restoreMaze(maze);
+
+    $.getJSON('/api/Maze?size=@mazeSize', function(data) {
+
+        $(maze).find('td').each(function(idx, cell) {
+
+            var walls = parseInt('0x' + data[idx]);
+
+            var $cell = $(cell);
+
+            $cell.removeClass('closed');
+
+            if (walls & 8) $cell.addClass('northWall');
+            if (walls & 4) $cell.addClass('eastWall');
+            if (walls & 2) $cell.addClass('southWall');
+            if (walls & 1) $cell.addClass('westWall');
+
+        });
+    });
+}
+
+function restoreMaze(maze) {
+    $(maze).find('td').removeClass().addClass('closed');
+}
+
+function markEntryAndExitPoints(maze) {
+    $(maze).find('td:first').html('<span class="glyphicon glyphicon-home"></span>');
+    $(maze).find('td:last').html('<span class="glyphicon glyphicon-star"></span>');
+}
+
+markEntryAndExitPoints('#recursiveBacktrackingMaze');
+carveMaze('#recursiveBacktrackingMaze');
+
+</script>
+
+}
