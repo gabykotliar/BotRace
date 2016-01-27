@@ -4,7 +4,11 @@ using BotRace.Game;
 
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-using Cell = BotRace.Game.Implementation.Cell;
+#if _FSHARP_IMPL 
+using Cell = BotRace.Game.Implementation.FSharp.Cell;
+#else
+using Cell = BotRace.Game.Implementation.CSharp.Cell;
+#endif
 
 namespace BotRace.Test.CSharp
 {

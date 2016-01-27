@@ -3,7 +3,7 @@ using System.Text;
 
 using ICell = BotRace.Game.Cell;
 
-namespace BotRace.Game.Implementation
+namespace BotRace.Game.Implementation.CSharp
 {
     public class Maze : BotRace.Game.Maze
     {

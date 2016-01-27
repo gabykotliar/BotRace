@@ -1,4 +1,4 @@
-﻿namespace BotRace.Game.Implementation
+﻿namespace BotRace.Game.Implementation.CSharp
 {
     public class Bot : BotRace.Game.Bot
     {

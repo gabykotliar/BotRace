@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace BotRace.Game.Implementation
+namespace BotRace.Game.Implementation.CSharp
 {
     public class Position : BotRace.Game.Position
     {

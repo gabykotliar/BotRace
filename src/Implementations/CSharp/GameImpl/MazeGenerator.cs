@@ -1,9 +1,9 @@
 ﻿// http://weblog.jamisbuck.org/2010/12/27/maze-generation-recursive-backtracking    
 
-using BotRace.Game.Implementation.Extensions;
+using BotRace.Game.Implementation.CSharp.Extensions;
 using IMaze = BotRace.Game.Maze;
 
-namespace BotRace.Game.Implementation
+namespace BotRace.Game.Implementation.CSharp
 {
     public class RecursiveBacktrackingMazeGenerator : MazeGenerator
     {

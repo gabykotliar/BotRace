@@ -7,10 +7,11 @@
     <ProjectGuid>{A71CF8BE-30A6-4A00-A877-637025F3616A}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>BotRace.Game.Implementation</RootNamespace>
+    <RootNamespace>BotRace.Game.Implementation.CSharp</RootNamespace>
     <AssemblyName>BotRace.Game.Implementation</AssemblyName>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>

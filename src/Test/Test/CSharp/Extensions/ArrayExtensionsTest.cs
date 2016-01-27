@@ -1,7 +1,7 @@
 ﻿using System.Linq;
 
 using BotRace.Game;
-using BotRace.Game.Implementation.Extensions;
+using BotRace.Game.Implementation.CSharp.Extensions;
 
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 

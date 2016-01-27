@@ -1,6 +1,6 @@
 ﻿using System;
 
-using BotRace.Game.Implementation;
+using BotRace.Game.Implementation.CSharp;
 
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 

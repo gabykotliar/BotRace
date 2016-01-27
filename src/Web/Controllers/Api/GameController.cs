@@ -18,8 +18,8 @@ namespace Web.Controllers.Api
         [HttpPost]        
         public HttpResponseMessage Post([FromBody]GameConfig configuration)
         {
-            configuration.MazeGenerator = new BotRace.Game.Implementation.RecursiveBacktrackingMazeGenerator();
-            Func<string, Bot> botBuilder = uri => new BotRace.Game.Implementation.Bot(uri);
+            configuration.MazeGenerator = new BotRace.Game.Implementation.CSharp.RecursiveBacktrackingMazeGenerator();
+            Func<string, Bot> botBuilder = uri => new BotRace.Game.Implementation.CSharp.Bot(uri);
 
             var race = new Game(configuration, botBuilder);
 

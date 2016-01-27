@@ -2,7 +2,11 @@
 
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-using Position = BotRace.Game.Implementation.Position;
+#if _FSHARP_IMPL 
+using Position = BotRace.Game.Implementation.FSharp.Position;
+#else
+using Position = BotRace.Game.Implementation.CSharp.Position;
+#endif
 
 namespace BotRace.Test.CSharp
 {
