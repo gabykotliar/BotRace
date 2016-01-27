@@ -5,13 +5,13 @@ open BotRace.Game
         open System.Collections.Specialized
         type T = BitVector32
 
-        let Create =
+        let Create() =
             new T(Direction.All |> int)
 
         let HasWal (cell : T) direction = 
             cell.[direction |> int]
 
-        let Carve (cell : T) direction =
+        let Carve direction (cell : T) =
             let newData = cell.Data  &&& (~~~(direction |> int))
             new T(newData)
 
@@ -23,8 +23,9 @@ open BotRace.Game
 
 type private _intf = BotRace.Game.Cell
 
-type Cell() =  
-    let mutable c = _Cell.Create
+type Cell(v : _Cell.T) =  
+    let mutable c = v
+    new() = Cell(_Cell.Create())
 
     member private this._toIntf = this :> BotRace.Game.Cell
     member this.HasWall direction = this._toIntf.HasWall direction
@@ -35,7 +36,7 @@ type Cell() =
     interface BotRace.Game.Cell with
         member this.HasWall direction = direction |> _Cell.HasWal c
         member this.Carve direction = 
-            c <- (direction |> _Cell.Carve  c)
+            c <- (c |> _Cell.Carve  direction)
             this._toIntf
         member this.IsClosed() = _Cell.IsClosed c
 

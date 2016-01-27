@@ -17,6 +17,9 @@ open BotRace.Game
         let MoveWest = function
             | r, c -> r, (c - 1)
 
+        let Row = fst
+        let Column = snd
+
         let At direction = 
             match direction with
                 | Direction.N -> MoveNorth
@@ -36,8 +39,8 @@ type Position(p : _Position.T) =
         (this :> BotRace.Game.Position).At direction
 
     interface BotRace.Game.Position with
-        member this.get_Column() = snd p
-        member this.get_Row() = fst p
+        member this.get_Column() =  p |> _Position.Column
+        member this.get_Row() = p |> _Position.Row
         member this.At direction =
             let newPosition = p |> _Position.At direction
             new Position(newPosition) :> BotRace.Game.Position

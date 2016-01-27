@@ -2,8 +2,13 @@
 using BotRace.Game;
 
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+#if _FSHARP_IMPL
+using Maze = BotRace.Game.Implementation.FSharp.Maze;
+using Position = BotRace.Game.Implementation.FSharp.Position;
+#else
 using Maze = BotRace.Game.Implementation.CSharp.Maze;
 using Position = BotRace.Game.Implementation.CSharp.Position;
+#endif
 
 namespace BotRace.Test.CSharp
 {
