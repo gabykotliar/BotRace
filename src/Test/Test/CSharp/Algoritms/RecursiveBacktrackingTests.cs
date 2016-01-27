@@ -1,6 +1,9 @@
 ﻿using System;
-
+#if _FSHARP_IMPL
+using BotRace.Game.Implementation.FSharp;
+#else
 using BotRace.Game.Implementation.CSharp;
+#endif
 
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 

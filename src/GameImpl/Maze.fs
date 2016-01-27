@@ -65,11 +65,11 @@ open BotRace.Game
             0 <= col && col < size && 0 <= row && row < size
 
  
-type Maze (size: int) =
-    
-    let maze = _Maze.Create(size)
-   
-    static member ClosedGrid size =
+type Maze (data : _Maze.T) =
+    let maze = data
+    new (size : int) = new Maze(_Maze.Create(size))
+
+    static member ClosedGrid (size : int) =
         new Maze(size)
 
     member this.Carve (from : Position) direction = 

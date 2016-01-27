@@ -47,6 +47,7 @@
     <Compile Include="Position.fs" />
     <Compile Include="Cell.fs" />
     <Compile Include="Maze.fs" />
+    <Compile Include="MazeGenerator.fs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Game\Game.csproj">
