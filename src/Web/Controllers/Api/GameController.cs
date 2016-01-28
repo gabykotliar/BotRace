@@ -4,6 +4,13 @@ using System.Net.Http;
 using System.Web.Http;
 
 using BotRace.Game;
+#if _FSHARP_IMPL
+using BotRace.Game.Implementation.FSharp;
+using Bot = BotRace.Game.Implementation.FSharp.Bot;
+#else
+using BotRace.Game.Implementation.CSharp;
+using Bot = BotRace.Game.Implementation.CSharp.Bot
+#endif
 
 namespace Web.Controllers.Api
 {
@@ -18,8 +25,8 @@ namespace Web.Controllers.Api
         [HttpPost]        
         public HttpResponseMessage Post([FromBody]GameConfig configuration)
         {
-            configuration.MazeGenerator = new BotRace.Game.Implementation.CSharp.RecursiveBacktrackingMazeGenerator();
-            Func<string, Bot> botBuilder = uri => new BotRace.Game.Implementation.CSharp.Bot(uri);
+            configuration.MazeGenerator = new RecursiveBacktrackingMazeGenerator();
+            Func<string, Bot> botBuilder = uri => new Bot(uri);
 
             var race = new Game(configuration, botBuilder);
 

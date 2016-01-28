@@ -1,7 +1,11 @@
 ﻿using System.Web.Http;
 
 using BotRace.Game;
+#if _FSHARP_IMPL
+using BotRace.Game.Implementation.FSharp;
+#else
 using BotRace.Game.Implementation.CSharp;
+#endif
 
 namespace Web.Controllers.Api
 {

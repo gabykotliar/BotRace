@@ -48,6 +48,8 @@
     <Compile Include="Cell.fs" />
     <Compile Include="Maze.fs" />
     <Compile Include="MazeGenerator.fs" />
+    <Compile Include="Bot.fs" />
+    <Compile Include="Movement.fs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Game\Game.csproj">

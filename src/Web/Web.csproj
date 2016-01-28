@@ -213,18 +213,31 @@
     <Content Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\GameImpl\GameFSharpImpl.fsproj">
+      <Project>{af569a3c-0827-4984-8ea0-7dd932f9d747}</Project>
+      <Name>GameFSharpImpl</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Game\Game.csproj">
       <Project>{9EED746E-515D-4CD5-B5FF-6196F19DE1AC}</Project>
       <Name>Game</Name>
     </ProjectReference>
     <ProjectReference Include="..\Implementations\CSharp\GameImpl\GameImpl.csproj">
-      <Project>{A71CF8BE-30A6-4A00-A877-637025F3616A}</Project>
+      <Project>{a71cf8be-30a6-4a00-a877-637025f3616a}</Project>
       <Name>GameImpl</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug - FSharp|AnyCPU'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE;DEBUG;_FSHARP_IMPL</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
