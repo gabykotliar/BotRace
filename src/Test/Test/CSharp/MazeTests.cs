@@ -1,16 +1,15 @@
 ﻿using System.Text;
 using BotRace.Game;
 
-using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Maze = BotRace.Game.Implementation.Maze;
 using Position = BotRace.Game.Implementation.Position;
+using Xunit;
 
 namespace BotRace.Test.CSharp
 {
-    [TestClass]
     public class MazeTests
     {
-        [TestMethod]
+        [Fact]
         public void ClosedDrawTest()
         {
             var expected = new StringBuilder();
@@ -19,10 +18,10 @@ namespace BotRace.Test.CSharp
             expected.AppendLine("|_|_|_|");
             expected.AppendLine("|_|_|_|");
 
-            Assert.AreEqual(expected.ToString(), Maze.ClosedGrid(3).Draw());
+            Assert.Equal(expected.ToString(), Maze.ClosedGrid(3).Draw());
         }
 
-        [TestMethod]
+        [Fact]
         public void CarvedEastGridDrawTest()
         {
             var expected = new StringBuilder();
@@ -35,10 +34,10 @@ namespace BotRace.Test.CSharp
 
             maze.Carve(new Position(0, 0), Direction.E);
 
-            Assert.AreEqual(expected.ToString(), maze.Draw());
+            Assert.Equal(expected.ToString(), maze.Draw());
         }
 
-        [TestMethod]
+        [Fact]
         public void CarvedSouthGridDrawTest()
         {
             var expected = new StringBuilder();
@@ -51,10 +50,10 @@ namespace BotRace.Test.CSharp
 
             maze.Carve(new Position(0, 0), Direction.S);
 
-            Assert.AreEqual(expected.ToString(), maze.Draw());
+            Assert.Equal(expected.ToString(), maze.Draw());
         }
 
-        [TestMethod]
+        [Fact]
         public void CarvedSouthAndEastGridDrawTest()
         {
             var expected = new StringBuilder();
@@ -68,10 +67,10 @@ namespace BotRace.Test.CSharp
             maze.Carve(new Position(0, 0), Direction.S);
             maze.Carve(new Position(0, 0), Direction.E);
 
-            Assert.AreEqual(expected.ToString(), maze.Draw());
+            Assert.Equal(expected.ToString(), maze.Draw());
         }
 
-        [TestMethod]
+        [Fact]
         public void CarvedCenterSouthGridDrawTest()
         {
             var expected = new StringBuilder();
@@ -85,10 +84,10 @@ namespace BotRace.Test.CSharp
 
             maze.Carve(new Position(2, 1), Direction.S);
 
-            Assert.AreEqual(expected.ToString(), maze.Draw());
+            Assert.Equal(expected.ToString(), maze.Draw());
         }
 
-        [TestMethod]
+        [Fact]
         public void CarvedCenterNorthGridDrawTest()
         {
             var expected = new StringBuilder();
@@ -102,10 +101,10 @@ namespace BotRace.Test.CSharp
 
             maze.Carve(new Position(2, 1), Direction.N);
 
-            Assert.AreEqual(expected.ToString(), maze.Draw());
+            Assert.Equal(expected.ToString(), maze.Draw());
         }
 
-        [TestMethod]
+        [Fact]
         public void CarvedCenterEastGridDrawTest()
         {
             var expected = new StringBuilder();
@@ -119,10 +118,10 @@ namespace BotRace.Test.CSharp
 
             maze.Carve(new Position(2, 1), Direction.E);
 
-            Assert.AreEqual(expected.ToString(), maze.Draw());
+            Assert.Equal(expected.ToString(), maze.Draw());
         }
 
-        [TestMethod]
+        [Fact]
         public void CarvedCenterWestGridDrawTest()
         {
             var expected = new StringBuilder();
@@ -136,10 +135,10 @@ namespace BotRace.Test.CSharp
 
             maze.Carve(new Position(2, 1), Direction.W);
 
-            Assert.AreEqual(expected.ToString(), maze.Draw());
+            Assert.Equal(expected.ToString(), maze.Draw());
         }
        
-        [TestMethod]
+        [Fact]
         public void ComplexGridDrawTest()
         {
             var expected = new StringBuilder();
@@ -194,7 +193,7 @@ namespace BotRace.Test.CSharp
             maze.Carve(new Position(4, 1), Direction.E);
             maze.Carve(new Position(4, 3), Direction.E);
 
-            Assert.AreEqual(expected.ToString(), maze.Draw());
+            Assert.Equal(expected.ToString(), maze.Draw());
         }
     }
 }

@@ -1,19 +1,17 @@
 ﻿using BotRace.Game;
-
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Xunit;
 
 namespace BotRace.Test.CSharp
 {
-    [TestClass]
     public class DirectionsTests
     {
-        [TestMethod]
+        [Fact]
         public void OpositeDirectionisCorrect()
         {
-            Assert.AreEqual(Direction.S, Direction.N.Oposite());
-            Assert.AreEqual(Direction.N, Direction.S.Oposite());
-            Assert.AreEqual(Direction.W, Direction.E.Oposite());
-            Assert.AreEqual(Direction.E, Direction.W.Oposite());
+            Assert.Equal(Direction.S, Direction.N.Oposite());
+            Assert.Equal(Direction.N, Direction.S.Oposite());
+            Assert.Equal(Direction.W, Direction.E.Oposite());
+            Assert.Equal(Direction.E, Direction.W.Oposite());
         }
     }
 }

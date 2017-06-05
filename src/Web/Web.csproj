@@ -20,6 +20,7 @@
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -213,11 +214,11 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Game\Game.csproj">
-      <Project>{9EED746E-515D-4CD5-B5FF-6196F19DE1AC}</Project>
+      <Project>{fd88d68a-1f5a-4ab2-bf1b-8f07fabd7cda}</Project>
       <Name>Game</Name>
     </ProjectReference>
     <ProjectReference Include="..\Implementations\CSharp\GameImpl\GameImpl.csproj">
-      <Project>{A71CF8BE-30A6-4A00-A877-637025F3616A}</Project>
+      <Project>{991877b5-ccb0-4f28-b043-707e86218828}</Project>
       <Name>GameImpl</Name>
     </ProjectReference>
   </ItemGroup>

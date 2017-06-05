@@ -1,24 +1,21 @@
 ﻿using BotRace.Game;
-
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-
+using Xunit;
 using Position = BotRace.Game.Implementation.Position;
 
 namespace BotRace.Test.CSharp
 {
-    [TestClass]
     public class PositionTests
     {
-        [TestMethod]
+        [Fact]
         public void ConstructorTest()
         {
             var p = new Position(2, 1);
 
-            Assert.AreEqual(2, p.Row);
-            Assert.AreEqual(1, p.Column);
+            Assert.Equal(2, p.Row);
+            Assert.Equal(1, p.Column);
         }
 
-        [TestMethod]
+        [Fact]
         public void PositionAtTests()
         {
             var p = new Position(2, 1);
@@ -28,24 +25,24 @@ namespace BotRace.Test.CSharp
             var sp = p.At(Direction.S);
 
             // from
-            Assert.AreEqual(2, p.Row);
-            Assert.AreEqual(1, p.Column);
+            Assert.Equal(2, p.Row);
+            Assert.Equal(1, p.Column);
 
             // north
-            Assert.AreEqual(1, np.Row, "nort row");
-            Assert.AreEqual(1, np.Column, "nort col");
+            Assert.Equal(1, np.Row); //"nort row"
+            Assert.Equal(1, np.Column); //"nort col"
 
             // east
-            Assert.AreEqual(2, ep.Row, "east row");
-            Assert.AreEqual(2, ep.Column, "east col");
+            Assert.Equal(2, ep.Row); //"east row"
+            Assert.Equal(2, ep.Column); //"east col"
 
             // west
-            Assert.AreEqual(2, wp.Row, "west row");
-            Assert.AreEqual(0, wp.Column, "west col");
+            Assert.Equal(2, wp.Row); //"west row"
+            Assert.Equal(0, wp.Column); //"west col"
 
             // south
-            Assert.AreEqual(3, sp.Row, "south row");
-            Assert.AreEqual(1, sp.Column, "south col");
+            Assert.Equal(3, sp.Row); //"south row"
+            Assert.Equal(1, sp.Column); //"south col"
         }
     }
 }

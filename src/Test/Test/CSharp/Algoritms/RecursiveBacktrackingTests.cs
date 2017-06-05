@@ -1,15 +1,13 @@
 ﻿using System;
 
 using BotRace.Game.Implementation;
-
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Xunit;
 
 namespace BotRace.Test.CSharp.Algoritms
 {
-    [TestClass]
     public class RecursiveBacktrackingTests
     {
-        [TestMethod]
+        [Fact]
         public void GenerateMaze()
         {
             var mg = new RecursiveBacktrackingMazeGenerator();

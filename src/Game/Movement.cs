@@ -1,17 +1,17 @@
-﻿using System.ComponentModel;
-
-namespace BotRace.Game
+﻿namespace BotRace.Game
 {
     public class Movement
     {
+        private const int MinimumSpeed = 1;
+
         public Movement(Direction direction)
         {
             if (direction == Direction.All) 
-                throw new InvalidEnumArgumentException("direction", (int)Direction.All, typeof(Direction));
+                throw new System.ArgumentException($"A specific direction must be specified. {(int)Direction.All} is invalid");
 
             Direction = direction;
 
-            Speed = 1;
+            Speed = MinimumSpeed;
         }
 
         public Direction Direction { get; set; }
