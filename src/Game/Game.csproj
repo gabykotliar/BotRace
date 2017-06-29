@@ -4,6 +4,8 @@
     <TargetFramework>netstandard1.3</TargetFramework>
     <PackageId>BotRace.Game</PackageId>
     <Authors>Gaby Kotliar</Authors>
+    <AssemblyName>BotRace.Game</AssemblyName>
+    <RootNamespace>BotRace.Game</RootNamespace>
   </PropertyGroup>
 
 </Project>
