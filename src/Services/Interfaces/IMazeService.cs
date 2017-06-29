@@ -1,7 +1,8 @@
 ﻿using System.Threading.Tasks;
+
 using Microsoft.ServiceFabric.Services.Remoting;
 
-namespace Services.Interfaces
+namespace BotRace.Services.Interfaces
 {
     public interface IMazeService : IService
     {

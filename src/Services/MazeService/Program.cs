@@ -1,11 +1,10 @@
 ﻿using System;
 using System.Diagnostics;
-using System.Fabric;
 using System.Threading;
-using System.Threading.Tasks;
+
 using Microsoft.ServiceFabric.Services.Runtime;
 
-namespace MazeService
+namespace BotRace.Services.MazeService
 {
     internal static class Program
     {

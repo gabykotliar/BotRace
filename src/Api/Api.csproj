@@ -4,6 +4,8 @@
     <TargetFramework>net461</TargetFramework>
     <RuntimeIdentifier>win7-x64</RuntimeIdentifier>
     <IsServiceFabricServiceProject>True</IsServiceFabricServiceProject>
+    <AssemblyName>Api</AssemblyName>
+    <RootNamespace>BotRace.Api</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>

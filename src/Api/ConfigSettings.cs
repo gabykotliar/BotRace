@@ -1,12 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
-using System.Fabric;
+﻿using System.Fabric;
 using System.Fabric.Description;
 
-namespace Api
+namespace BotRace.Api
 {
     public class ConfigSettings
     {

@@ -1,14 +1,12 @@
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
 using System.Fabric;
-using Services.Interfaces;
+using System.Threading.Tasks;
+
+using BotRace.Services.Interfaces;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.ServiceFabric.Services.Remoting.Client;
 
-namespace Api.Controllers
+namespace BotRace.Api.Controllers
 {
     [Produces("application/json")]
     [Route("api/[controller]")]

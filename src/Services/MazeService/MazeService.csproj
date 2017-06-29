@@ -7,7 +7,7 @@
     <ProjectGuid>{A81B08CD-4028-4B62-88FD-17ADB463EE36}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>MazeService</RootNamespace>
+    <RootNamespace>BotRace.Services.MazeService</RootNamespace>
     <AssemblyName>MazeService</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>

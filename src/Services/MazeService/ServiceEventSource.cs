@@ -7,7 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.ServiceFabric.Services.Runtime;
 
-namespace MazeService
+namespace BotRace.Services.MazeService
 {
     [EventSource(Name = "MyCompany-BotRaceServices-MazeService")]
     internal sealed class ServiceEventSource : EventSource

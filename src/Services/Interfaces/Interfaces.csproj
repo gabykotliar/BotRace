@@ -7,8 +7,8 @@
     <ProjectGuid>{0E3F2234-8BF0-4C2C-A83E-819C913BC8AC}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Interfaces</RootNamespace>
-    <AssemblyName>Interfaces</AssemblyName>
+    <RootNamespace>BotRace.Services.Interfaces</RootNamespace>
+    <AssemblyName>BotRace.Services.Interfaces</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />

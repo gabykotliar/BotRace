@@ -2,6 +2,8 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard1.3</TargetFramework>
+    <PackageId>BotRace.Game</PackageId>
+    <Authors>Gaby Kotliar</Authors>
   </PropertyGroup>
 
 </Project>
