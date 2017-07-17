@@ -1,25 +1,28 @@
-﻿using System;
-using System.Linq;
+﻿using System.Linq;
 using System.Collections.Generic;
 
 namespace BotRace.Game.Runtime.Rules
 {
-    internal class RulePipeline
+    public class RulePipeline
     {
-        private readonly List<Rule> rules = new List<Rule>();
+        private readonly List<StageRule> rules = new List<StageRule>();
 
-        public void Add<T>() where T : Rule, new()
+        public RulePipeline Add<T>() where T : StageRule, new()
         {
             var rule = new T();
 
             if (rules.Any()) rules.Last().Next = rule;
 
             rules.Add(rule);
+
+            return this;
         }
 
-        public void Eval()
+        public GameStatus Eval(GameStatus status)
         {
-            rules.First().Evaluate(null);
+            if (!rules.Any()) return status;
+
+            return rules.First().Evaluate(status);
         }
     }
 }

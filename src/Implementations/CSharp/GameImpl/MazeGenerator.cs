@@ -1,5 +1,7 @@
 ﻿// http://weblog.jamisbuck.org/2010/12/27/maze-generation-recursive-backtracking    
 
+// http://weblog.jamisbuck.org/2011/2/7/maze-generation-algorithm-recap.html
+
 using BotRace.Game.Implementation.Extensions;
 using IMaze = BotRace.Game.Maze;
 

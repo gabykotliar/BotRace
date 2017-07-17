@@ -1,4 +1,6 @@
-﻿namespace BotRace.Game.Implementation
+﻿using BotRace.Game.Runtime;
+
+namespace BotRace.Game.Implementation
 {
     public class Bot : BotRace.Game.Bot
     {
@@ -9,7 +11,7 @@
             this.uri = uri;
         }
 
-        public Movement GetMoveRequest()
+        public Movement Play()
         {
             return new Movement(Direction.W);
         }

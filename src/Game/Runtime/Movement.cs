@@ -1,4 +1,4 @@
-﻿namespace BotRace.Game
+﻿namespace BotRace.Game.Runtime
 {
     public class Movement
     {

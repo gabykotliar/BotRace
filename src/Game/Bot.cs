@@ -1,8 +1,10 @@
-﻿namespace BotRace.Game
+﻿using BotRace.Game.Runtime;
+
+namespace BotRace.Game
 {
     public interface Bot
     {
-        Movement GetMoveRequest();
+        Movement Play();
 
         void SetCell(Cell currentCell);
 
