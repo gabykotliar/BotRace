@@ -1,12 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System.Collections.Generic;
+
 using BotRace.Game.Implementation;
 using BotRace.Game.Runtime;
 using BotRace.Game.Runtime.Rules;
+
 using Xunit;
-using IBot = BotRace.Game.Bot;
+
+using IMaze = BotRace.Game.Maze;
 
 namespace Test.CSharp.Game.Rules
 {
@@ -15,11 +15,9 @@ namespace Test.CSharp.Game.Rules
         [Fact]
         public void EvaluatingTheRuleSetsEveryBotAtHomeCell()
         {
-            var rule = new EveryoneStartsAtMazeHome();
+            var mm = new Moq.Mock<IMaze>();
 
             var home = new Position(0, 0);
-            var mm = new Moq.Mock<Maze>();
-
             mm.Setup(m => m.Home).Returns(home);
 
             var gs = new GameStatus
@@ -33,9 +31,12 @@ namespace Test.CSharp.Game.Rules
                 }
             };
 
-            var ngs = rule.Evaluate(gs);
+            // on new game status there are no positions set
+            Assert.All(gs.Bots, b => Assert.Null(gs.Positions[b]));
 
-            Assert.All(ngs.Bots, b => Assert.Equal(home, ngs.PositionOf(b)));
+            var ngs = new EveryoneStartsAtMazeHome().Evaluate(gs);
+
+            Assert.All(ngs.Bots, b => Assert.Equal(gs.Maze.Home, ngs.Positions[b]));
         }
     }
 }

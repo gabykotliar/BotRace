@@ -4,9 +4,11 @@ namespace BotRace.Game.Runtime.Rules
     {
         public override GameStatus Evaluate(GameStatus status)
         {
+            var home = status.Maze.Home;
+
             foreach (var bot in status.Bots)
             {
-                bot.SetCell(status.Maze.CellAt(status.Maze.Home));
+                status.Positions[bot] = home;
             }
 
             return EvaluateNext(status);

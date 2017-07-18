@@ -4,17 +4,29 @@ namespace BotRace.Game.Runtime
 {
     public class GameStatus
     {
-        private Dictionary<Bot, Position> Positions { get; set; }
+        private IEnumerable<Bot> bots;
 
-        public IEnumerable<Bot> Bots { get; set; }
+        public Dictionary<Bot, Position> Positions { get; private set; }
+
+        public IEnumerable<Bot> Bots
+        {
+            get
+            {
+                return bots;
+            }
+            set
+            {
+                bots = value;
+
+                Positions = new Dictionary<Bot, Position>();
+
+                foreach (var bot in bots)
+                {
+                    Positions.Add(bot, null);
+                }
+            }
+        }
 
         public Maze Maze { get; set; }
-
-        public Position PositionOf(Bot bot)
-        {
-            return Positions.ContainsKey(bot) 
-                    ? Positions[bot] 
-                    : null;
-        }
     }
 }

@@ -6,8 +6,6 @@ namespace BotRace.Game
     {
         Movement Play();
 
-        void SetCell(Cell currentCell);
-
         void InvalidMoveResponse();
     }
 }

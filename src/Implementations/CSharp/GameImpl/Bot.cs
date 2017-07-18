@@ -16,11 +16,6 @@ namespace BotRace.Game.Implementation
             return new Movement(Direction.W);
         }
 
-        public void SetCell(BotRace.Game.Cell currentCell)
-        {
-            throw new System.NotImplementedException();
-        }
-
         public void InvalidMoveResponse()
         {
             throw new System.NotImplementedException();

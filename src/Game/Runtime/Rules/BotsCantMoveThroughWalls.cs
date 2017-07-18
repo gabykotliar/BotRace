@@ -6,7 +6,7 @@ namespace BotRace.Game.Runtime.Rules
     {
         public override ActionResult Evaluate(GameStatus status, Action action)
         {
-            var currentPosition = status.PositionOf(action.Bot);
+            var currentPosition = status.Positions[action.Bot];
 
             for (int i = 0; i < action.Movement.Speed; i++)
             {
@@ -28,7 +28,7 @@ namespace BotRace.Game.Runtime.Rules
     {
         public override ActionResult Evaluate(GameStatus status, Action action)
         {
-            var currentPosition = status.PositionOf(action.Bot);
+            var currentPosition = status.Positions[action.Bot];
 
             for (int i = 0; i < action.Movement.Speed; i++)
             {
