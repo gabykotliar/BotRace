@@ -1,6 +1,6 @@
 ﻿namespace BotRace.Game.Runtime.Rules
 {
-    public abstract class StageRule
+    public abstract class StageRule 
     {
         internal StageRule Next { get; set; }
 

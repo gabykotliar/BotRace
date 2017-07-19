@@ -7,6 +7,7 @@ using BotRace.Game.Runtime.Rules;
 using Xunit;
 
 using IMaze = BotRace.Game.Maze;
+using IBot = BotRace.Game.Bot;
 
 namespace Test.CSharp.Game.Rules
 {
@@ -23,11 +24,11 @@ namespace Test.CSharp.Game.Rules
             var gs = new GameStatus
             {
                 Maze = mm.Object,
-                Bots = new List<Bot>
+                Bots = new List<IBot>
                 {
-                    new Bot(string.Empty),
-                    new Bot(string.Empty),
-                    new Bot(string.Empty)
+                    new Moq.Mock<IBot>().Object,
+                    new Moq.Mock<IBot>().Object,
+                    new Moq.Mock<IBot>().Object
                 }
             };
 

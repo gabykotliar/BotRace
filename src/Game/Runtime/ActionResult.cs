@@ -11,9 +11,4 @@ namespace BotRace.Game.Runtime
     {
         public string Reason { get; set; }
     }
-
-    public class NewPosition
-    {
-        public GameStatus Status { get; set; }
-    }
 }

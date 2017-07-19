@@ -5,7 +5,5 @@ namespace BotRace.Game
     public interface Bot
     {
         Movement Play();
-
-        void InvalidMoveResponse();
     }
 }

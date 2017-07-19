@@ -10,11 +10,11 @@ namespace GameImpl.Runtime
 {
     public class Game : IGame
     {
-        private readonly GameStatus status;
+        private GameStatus status;
 
-        private RulePipeline GameSetupRules { get; } = new RulePipeline();
+        private StageRulePipeline GameSetupStageRules { get; } = new StageRulePipeline();
 
-        private IEnumerable<TurnRule> TurnRules { get; }
+        private TurnRulePipeline TurnRules { get; } = new TurnRulePipeline();
 
         #region Constructor
 
@@ -31,15 +31,18 @@ namespace GameImpl.Runtime
 
         private void SetupGameRules()
         {
-            GameSetupRules.Add<TurnsAreRandom>()
-                          .Add<EveryoneStartsAtMazeHome>();
+            GameSetupStageRules.Add<TurnsAreRandom>()
+                               .Add<EveryoneStartsAtMazeHome>();
+
+            TurnRules.Add<MovingThroughAWallIsInvalid>()
+                     .Add<Move>();
         }
 
         #endregion
 
         public IGame Setup()
         {
-            GameSetupRules.Eval(status);
+            status = GameSetupStageRules.Eval(status);
 
             return this;
         }
@@ -48,38 +51,14 @@ namespace GameImpl.Runtime
         {
             foreach (var bot in status.Bots)
             {
-                Movement moveRquest = bot.Play();
+                var actionRquest = bot.Play();
 
-                try
-                {
-                    //MoveBot(bot, moveRquest);
-                }
-                catch (InvalidOperationException)
-                {
-                   // bot.InvalidMoveResponse();
-                }
+                var action = new BotRace.Game.Runtime.Action { Bot = bot, Movement = actionRquest };
+
+                var actionResponse = TurnRules.Eval(status, action);
+
+                //bot.PlayResult(actionResponse);
             }
         }
-
-        //private void MoveBot(Bot bot, Movement moveRquest)
-        //{
-        //    //var currentPosition = positions[bot];
-
-        //    //for (int i = 0; i < moveRquest.Speed; i++)
-        //    //{                
-        //    //    var currentCell = Maze.CellAt(currentPosition);
-
-        //    //    if (currentCell.HasWall(moveRquest.Direction))
-        //    //    {
-        //    //        throw new InvalidOperationException("Invalid move");
-        //    //    }
-
-        //    //    currentPosition = currentPosition.At(moveRquest.Direction);
-        //    //}
-
-        //    //positions[bot] = currentPosition;
-
-        //    //bot.SetCell(Maze.CellAt(currentPosition));
-        //}
     }
 }

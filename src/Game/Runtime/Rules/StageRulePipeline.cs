@@ -3,11 +3,11 @@ using System.Collections.Generic;
 
 namespace BotRace.Game.Runtime.Rules
 {
-    public class RulePipeline
+    public class StageRulePipeline 
     {
         private readonly List<StageRule> rules = new List<StageRule>();
 
-        public RulePipeline Add<T>() where T : StageRule, new()
+        public StageRulePipeline Add<T>() where T : StageRule, new()
         {
             var rule = new T();
 

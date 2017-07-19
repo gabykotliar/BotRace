@@ -10,10 +10,7 @@ namespace BotRace.Game.Runtime
 
         public IEnumerable<Bot> Bots
         {
-            get
-            {
-                return bots;
-            }
+            get => bots;
             set
             {
                 bots = value;

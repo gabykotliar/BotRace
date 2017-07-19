@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Text;
 using BotRace.Game;
-using BotRace.Game.Implementation;
 using Xunit;
 
 namespace Test.CSharp
@@ -14,7 +13,7 @@ namespace Test.CSharp
         [Fact]
         public void ICanCreateAGame()
         {
-            factory.CreateGame(new GameConfig(new[] { new BotStub() }, 
+            factory.CreateGame(new GameConfig(new[] { new Moq.Mock<Bot>().Object }, 
                                               new MazeStub()));
 
 
