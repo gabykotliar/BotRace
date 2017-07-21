@@ -4,7 +4,7 @@ namespace BotRace.Game.Runtime
 {
     public class GameStatus
     {
-        private IEnumerable<Bot> bots;
+        protected IEnumerable<Bot> bots;
 
         public Dictionary<Bot, Position> Positions { get; private set; }
 
@@ -25,5 +25,14 @@ namespace BotRace.Game.Runtime
         }
 
         public Maze Maze { get; set; }
+    }
+
+    public class EndStatus : GameStatus
+    {
+        public EndStatus(GameStatus status)
+        {
+            this.bots = status.Bots;
+            //etc.
+        }
     }
 }

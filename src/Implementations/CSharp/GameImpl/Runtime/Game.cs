@@ -12,9 +12,11 @@ namespace GameImpl.Runtime
     {
         private GameStatus status;
 
-        private StageRulePipeline GameSetupStageRules { get; } = new StageRulePipeline();
+        private StageRulePipeline SetupRules { get; } = new StageRulePipeline();
 
         private TurnRulePipeline TurnRules { get; } = new TurnRulePipeline();
+
+        private StageRulePipeline EndTurnRules { get; } = new StageRulePipeline();
 
         #region Constructor
 
@@ -31,7 +33,7 @@ namespace GameImpl.Runtime
 
         private void SetupGameRules()
         {
-            GameSetupStageRules.Add<TurnsAreRandom>()
+            SetupRules.Add<TurnsAreRandom>()
                                .Add<EveryoneStartsAtMazeHome>();
 
             TurnRules.Add<MovingThroughAWallIsInvalid>()
@@ -42,23 +44,41 @@ namespace GameImpl.Runtime
 
         public IGame Setup()
         {
-            status = GameSetupStageRules.Eval(status);
+            status = SetupRules.Eval(status);
 
             return this;
         }
 
         public void Play()
         {
-            foreach (var bot in status.Bots)
+            do
             {
-                var actionRquest = bot.Play();
+                foreach (var bot in status.Bots)
+                {
+                    PlayPlayerTurn(bot);
+                }
 
-                var action = new BotRace.Game.Runtime.Action { Bot = bot, Movement = actionRquest };
+                status = EndTurnRules.Eval(status);
 
-                var actionResponse = TurnRules.Eval(status, action);
+            } while (!(status is EndStatus));
 
-                //bot.PlayResult(actionResponse);
-            }
+            EndGame();
+        }
+
+        private void EndGame()
+        {
+            throw new NotImplementedException();
+        }
+
+        private void PlayPlayerTurn(Bot bot)
+        {
+            var actionRquest = bot.Play();
+
+            var action = new BotRace.Game.Runtime.Action { Bot = bot, Movement = actionRquest };
+
+            var actionResponse = TurnRules.Eval(status, action);
+            
+            //bot.PlayResult(actionResponse);
         }
     }
 }
