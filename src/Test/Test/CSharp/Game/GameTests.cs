@@ -48,7 +48,7 @@ namespace Test.CSharp.Game
         }
 
         [Fact]
-        public void ANeedsToBeSetupBeforePlayed()
+        public void AGameNeedsToBeSetupBeforePlayed()
         {
             var g = CreateStubGame();
 
@@ -75,5 +75,11 @@ namespace Test.CSharp.Game
 
             g.Play();
         }
+        //TODO: Continue here
+        public BotRace.Game.Maze GetMaze()
+        {
+            var cg = BotRace.Game.Implementation.Maze.ClosedGrid(2);
+        }
+
     }
 }

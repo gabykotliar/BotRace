@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using BotRace.Game;
 using BotRace.Game.Runtime;
 using BotRace.Game.Runtime.Rules;
@@ -67,7 +66,7 @@ namespace GameImpl.Runtime
 
         private void EndGame()
         {
-            throw new NotImplementedException();
+            //bot.PlayResult(status);
         }
 
         private void PlayPlayerTurn(Bot bot)
