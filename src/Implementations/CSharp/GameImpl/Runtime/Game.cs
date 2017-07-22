@@ -12,11 +12,11 @@ namespace GameImpl.Runtime
     {
         private GameStatus status;
 
-        private StageRulePipeline SetupRules { get; } = new StageRulePipeline();
+        private StageRulePipeline GameStartRules { get; } = new StageRulePipeline();
 
         private TurnRulePipeline TurnRules { get; } = new TurnRulePipeline();
 
-        private StageRulePipeline EndTurnRules { get; } = new StageRulePipeline();
+        private StageRulePipeline TurnEndRules { get; } = new StageRulePipeline();
 
         #region Constructor
 
@@ -33,7 +33,7 @@ namespace GameImpl.Runtime
 
         private void SetupGameRules()
         {
-            SetupRules.Add<TurnsAreRandom>()
+            GameStartRules.Add<TurnsAreRandom>()
                                .Add<EveryoneStartsAtMazeHome>();
 
             TurnRules.Add<MovingThroughAWallIsInvalid>()
@@ -44,7 +44,7 @@ namespace GameImpl.Runtime
 
         public IGame Setup()
         {
-            status = SetupRules.Eval(status);
+            status = GameStartRules.Eval(status);
 
             return this;
         }
@@ -55,14 +55,25 @@ namespace GameImpl.Runtime
             {
                 foreach (var bot in status.Bots)
                 {
-                    PlayPlayerTurn(bot);
+                    PlayerTurn(bot);
                 }
 
-                status = EndTurnRules.Eval(status);
+                status = TurnEndRules.Eval(status);
 
             } while (!(status is EndStatus));
 
             EndGame();
+        }
+
+        private void PlayerTurn(Bot bot)
+        {
+            var actionRquest = bot.Play();
+
+            var action = new BotRace.Game.Runtime.Action { Bot = bot, Movement = actionRquest };
+
+            var actionResponse = TurnRules.Eval(status, action);
+
+            //bot.PlayResult(actionResponse);
         }
 
         private void EndGame()
@@ -70,15 +81,6 @@ namespace GameImpl.Runtime
             throw new NotImplementedException();
         }
 
-        private void PlayPlayerTurn(Bot bot)
-        {
-            var actionRquest = bot.Play();
-
-            var action = new BotRace.Game.Runtime.Action { Bot = bot, Movement = actionRquest };
-
-            var actionResponse = TurnRules.Eval(status, action);
-            
-            //bot.PlayResult(actionResponse);
-        }
+        
     }
 }
