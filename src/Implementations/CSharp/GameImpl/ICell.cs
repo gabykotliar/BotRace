@@ -1,7 +1,5 @@
 ﻿using System.Collections.Specialized;
 
-using ICell = BotRace.Game.Cell;
-
 namespace BotRace.Game.Implementation
 {
     public class Cell : ICell

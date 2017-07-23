@@ -1,8 +1,6 @@
 ﻿using System.Text;
 using BotRace.Game;
-
-using Maze = BotRace.Game.Implementation.Maze;
-using Position = BotRace.Game.Implementation.Position;
+using BotRace.Game.Implementation;
 using Xunit;
 
 namespace BotRace.Test.CSharp

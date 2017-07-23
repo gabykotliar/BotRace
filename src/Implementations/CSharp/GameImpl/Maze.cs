@@ -1,13 +1,16 @@
 ﻿using System.Collections.Generic;
 using System.Text;
 
-using ICell = BotRace.Game.Cell;
-
 namespace BotRace.Game.Implementation
 {
-    public class Maze : BotRace.Game.Maze
+    public class Maze : IMaze
     {
         private Cell[][] Grid { get; set; }
+
+        protected Maze()
+        {
+            
+        }
 
         internal static Maze ClosedGrid(int size)
         {
@@ -25,10 +28,15 @@ namespace BotRace.Game.Implementation
                 grid.Add(cellsRow.ToArray());
             }
 
-            return new Maze { Grid = grid.ToArray() };
+            return new Maze
+            {
+                Home = new Position(0,0),
+                Exit = new Position(size - 1, size - 1),
+                Grid = grid.ToArray()
+            };
         }
 
-        internal bool Exists(BotRace.Game.Position position)
+        internal bool Exists(IPosition position)
         {
             var size = Grid.Length;
 
@@ -36,11 +44,11 @@ namespace BotRace.Game.Implementation
                    0 <= position.Row && position.Row < size;
         }
 
-        public int Width { get { return Grid[0].Length; } }
-        
-        public int Height { get { return Grid.Length; } }
+        public int Width => Grid[0].Length;
 
-        public ICell CellAt(BotRace.Game.Position position)
+        public int Height => Grid.Length;
+
+        public ICell CellAt(IPosition position)
         {
             return Grid[position.Row][position.Column];
         }
@@ -61,21 +69,9 @@ namespace BotRace.Game.Implementation
             return grid.ToString();
         }
 
-        public BotRace.Game.Position Home 
-        {
-            get
-            {
-                return new Position(0, 0);
-            }
-        }
+        public IPosition Home { get; protected set; }
 
-        public BotRace.Game.Position Exit
-        {
-            get
-            {
-                return new Position(Height - 1, Width - 1);
-            }
-        }
+        public IPosition Exit { get; protected set; }
 
         internal void Carve(Position from, Direction direction)
         {

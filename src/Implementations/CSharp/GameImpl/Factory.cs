@@ -2,25 +2,25 @@
 using BotRace.Game.Implementation;
 using BotRace.Game.Runtime;
 
-using Maze = BotRace.Game.Maze;
+using GameImpl.Runtime;
 
 namespace GameImpl
 {
-    public class Factory : BotRace.Game.Factory
+    public class Factory : IFactory
     {
-        internal MazeGenerator MazeGenerator { get; set; }
+        internal IMazeGenerator MazeGenerator { get; set; }
 
         public Factory()
         {
             MazeGenerator = new RecursiveBacktrackingMazeGenerator();
         }
 
-        public Game CreateGame(GameConfig config)
+        public IGame CreateGame(GameConfig config)
         {
-            return new Runtime.Game(config);
+            return new Game(config);
         }
 
-        public Maze CreateMaze(int size)
+        public IMaze CreateMaze(int size)
         {
             return MazeGenerator.Create(size);
         }

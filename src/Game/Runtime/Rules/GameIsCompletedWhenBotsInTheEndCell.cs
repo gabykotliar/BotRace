@@ -5,7 +5,7 @@ namespace BotRace.Game.Runtime.Rules
 {
     public class GameIsCompletedWhenBotsInTheEndCell : StageRule
     {
-        List<Bot> winners = new List<Bot>();
+        List<IBot> winners = new List<IBot>();
 
         public override GameStatus Evaluate(GameStatus status)
         {

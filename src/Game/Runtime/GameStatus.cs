@@ -4,18 +4,18 @@ namespace BotRace.Game.Runtime
 {
     public class GameStatus 
     {
-        protected IEnumerable<Bot> bots;
+        protected IEnumerable<IBot> bots;
 
-        public Dictionary<Bot, Position> Positions { get; protected set; }
+        public Dictionary<IBot, IPosition> Positions { get; protected set; }
 
-        public IEnumerable<Bot> Bots
+        public IEnumerable<IBot> Bots
         {
             get => bots;
             set
             {
                 bots = value;
 
-                Positions = new Dictionary<Bot, Position>();
+                Positions = new Dictionary<IBot, IPosition>();
 
                 foreach (var bot in bots)
                 {
@@ -24,12 +24,12 @@ namespace BotRace.Game.Runtime
             }
         }
 
-        public Maze Maze { get; set; }
+        public IMaze Maze { get; set; }
     }
 
     public class FinalStatus : GameStatus
     {
-        public IEnumerable<Bot> Winners { get; set; }
+        public IEnumerable<IBot> Winners { get; set; }
 
         public FinalStatus(GameStatus status)
         {

@@ -6,9 +6,4 @@ namespace BotRace.Game.Runtime
     {
         public GameStatus Status { get; set; }
     }
-
-    public class InvalidAction : ActionResult
-    {
-        public string Reason { get; set; }
-    }
 }

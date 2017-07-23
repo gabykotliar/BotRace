@@ -2,10 +2,12 @@
 
 namespace BotRace.Game
 {
-    public interface Bot
+    public interface IBot
     {
         Movement Play();
+
         void PlayResult(ActionResult actionResponse);
+
         void GameResult(GameStatus status);
     }
 }

@@ -3,11 +3,11 @@
 // http://weblog.jamisbuck.org/2011/2/7/maze-generation-algorithm-recap.html
 
 using BotRace.Game.Implementation.Extensions;
-using IMaze = BotRace.Game.Maze;
+using IMaze = BotRace.Game.IMaze;
 
 namespace BotRace.Game.Implementation
 {
-    public class RecursiveBacktrackingMazeGenerator : MazeGenerator
+    public class RecursiveBacktrackingMazeGenerator : IMazeGenerator
     {
         public IMaze Create(int size)
         {

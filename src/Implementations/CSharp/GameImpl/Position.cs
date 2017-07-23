@@ -2,7 +2,7 @@
 
 namespace BotRace.Game.Implementation
 {
-    public class Position : BotRace.Game.Position
+    public class Position : BotRace.Game.IPosition
     {
         public Position(int row, int column)
         {
@@ -14,7 +14,7 @@ namespace BotRace.Game.Implementation
 
         public int Row { get; private set; }
 
-        public BotRace.Game.Position At(Direction direction)
+        public BotRace.Game.IPosition At(Direction direction)
         {
             switch (direction)
             {

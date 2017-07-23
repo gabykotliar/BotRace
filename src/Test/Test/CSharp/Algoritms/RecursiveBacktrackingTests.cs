@@ -1,6 +1,7 @@
 ﻿using System;
 
 using BotRace.Game.Implementation;
+
 using Xunit;
 
 namespace BotRace.Test.CSharp.Algoritms

@@ -3,17 +3,17 @@ using BotRace.Game;
 
 namespace Test
 {
-    internal class MazeStub : Maze
+    internal class MazeStub : IMaze
     {
         public int Width { get; }
 
         public int Height { get; }
 
-        public Position Home { get; }
+        public IPosition Home { get; }
 
-        public Position Exit { get; }
+        public IPosition Exit { get; }
 
-        public Cell CellAt(Position position)
+        public ICell CellAt(IPosition position)
         {
             throw new NotImplementedException();
         }

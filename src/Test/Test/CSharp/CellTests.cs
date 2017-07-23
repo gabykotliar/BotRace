@@ -1,8 +1,5 @@
-﻿using System;
-
-using BotRace.Game;
-
-using Cell = BotRace.Game.Implementation.Cell;
+﻿using BotRace.Game;
+using BotRace.Game.Implementation;
 using Xunit;
 
 namespace BotRace.Test.CSharp

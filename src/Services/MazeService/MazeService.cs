@@ -24,7 +24,7 @@ namespace BotRace.Services.MazeService
 
         public Task<string> GetMazeAsync(int size)
         {
-            MazeGenerator mg = new RecursiveBacktrackingMazeGenerator();
+            IMazeGenerator mg = new RecursiveBacktrackingMazeGenerator();
 
             var maze = mg.Create(size);
 
@@ -37,7 +37,7 @@ namespace BotRace.Services.MazeService
         /// <returns>A collection of listeners.</returns>
         protected override IEnumerable<ServiceInstanceListener> CreateServiceInstanceListeners()
         {
-            return new ServiceInstanceListener[1]
+            return new[]
             {
                 new ServiceInstanceListener(this.CreateServiceRemotingListener)
             };

@@ -4,6 +4,6 @@
     {
         public Movement Movement { get; set; }
 
-        public Bot Bot { get; set; }
+        public IBot Bot { get; set; }
     }
 }

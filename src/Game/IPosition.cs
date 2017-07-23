@@ -1,6 +1,6 @@
 ﻿namespace BotRace.Game
 {
-    public interface Position
+    public interface IPosition
     {
         /// <summary>
         /// Column reference numbered from West to East
@@ -12,6 +12,6 @@
         /// </summary>
         int Row { get; }
 
-        Position At(Direction direction);
+        IPosition At(Direction direction);
     }
 }

@@ -7,7 +7,7 @@ namespace BotRace.Test
 {
     public static class MazeHelper
     {
-        public static string Draw(this Maze maze)
+        public static string Draw(this IMaze maze)
         {
             var graph = new StringBuilder();
             var heigth = maze.Height;

@@ -1,27 +1,27 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Linq.Expressions;
+
 using BotRace.Game;
 using BotRace.Game.Implementation;
 using BotRace.Game.Runtime;
-using IBot = BotRace.Game.Bot;
-using IPosition = BotRace.Game.Position;
-using Position = BotRace.Game.Implementation.Position;
-using Xunit;
-using System.Collections.Generic;
+
 using Moq;
-using System.Linq;
-using System.Linq.Expressions;
+
+using Xunit;
 
 namespace Test.CSharp.Game
 {
     public class GameTests
     {
-        readonly Factory factory = new GameImpl.Factory();
+        readonly IFactory factory = new GameImpl.Factory();
 
-        private BotRace.Game.Runtime.Game CreateStubGame()
+        private IGame CreateStubGame()
         {
             var mazeStub = new MazeStub();
 
-            return factory.CreateGame(new GameConfig(new[] { new Moq.Mock<IBot>().Object },
+            return factory.CreateGame(new GameConfig(new[] { new Mock<IBot>().Object },
                                                      mazeStub));
         }
 
@@ -30,7 +30,7 @@ namespace Test.CSharp.Game
         {
             var mazeStub = new MazeStub();
 
-            var g = factory.CreateGame(new GameConfig(new[] { new Moq.Mock<IBot>().Object }, 
+            var g = factory.CreateGame(new GameConfig(new[] { new Mock<IBot>().Object }, 
                                                       mazeStub));
 
             Assert.NotNull(g);
@@ -42,15 +42,6 @@ namespace Test.CSharp.Game
             var g = CreateStubGame();
 
             g.Setup();
-        }
-
-        [Fact]
-        public void AGameCanBePlayed()
-        {
-            var g = CreateStubGame();
-
-            g.Setup()
-             .Play();
         }
 
         [Fact]
@@ -102,9 +93,9 @@ namespace Test.CSharp.Game
             bot.Verify(endGameCall);
         }
 
-        public BotRace.Game.Maze GetMaze()
+        public IMaze GetMaze()
         {
-            var maze = BotRace.Game.Implementation.Maze.ClosedGrid(2);
+            var maze = Maze.ClosedGrid(2);
 
             maze.Carve(new Position(0, 0), Direction.E);
             maze.Carve(new Position(0, 1), Direction.S);

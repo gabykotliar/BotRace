@@ -1,9 +1,6 @@
-﻿using System;
-using BotRace.Game;
+﻿using BotRace.Game;
 using BotRace.Game.Runtime;
 using BotRace.Game.Runtime.Rules;
-
-using IGame = BotRace.Game.Runtime.Game;
 
 namespace GameImpl.Runtime
 {
@@ -66,11 +63,11 @@ namespace GameImpl.Runtime
             EndGame();
         }
 
-        private void PlayerTurn(Bot bot)
+        private void PlayerTurn(IBot bot)
         {
             var actionRquest = bot.Play();
 
-            var action = new BotRace.Game.Runtime.Action { Bot = bot, Movement = actionRquest };
+            var action = new Action { Bot = bot, Movement = actionRquest };
 
             var actionResponse = TurnRules.Eval(status, action);
 

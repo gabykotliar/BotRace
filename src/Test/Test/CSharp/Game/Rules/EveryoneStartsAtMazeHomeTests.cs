@@ -6,8 +6,8 @@ using BotRace.Game.Runtime.Rules;
 
 using Xunit;
 
-using IMaze = BotRace.Game.Maze;
-using IBot = BotRace.Game.Bot;
+using IMaze = BotRace.Game.IMaze;
+using IBot = BotRace.Game.IBot;
 
 namespace Test.CSharp.Game.Rules
 {

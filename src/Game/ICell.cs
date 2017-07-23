@@ -1,10 +1,10 @@
 ﻿namespace BotRace.Game
 {
-    public interface Cell
+    public interface ICell
     {        
         bool HasWall(Direction direction);
 
-        Cell Carve(Direction direction);
+        ICell Carve(Direction direction);
 
         bool IsClosed();
     }
