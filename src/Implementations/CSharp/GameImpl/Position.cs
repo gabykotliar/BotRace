@@ -26,5 +26,18 @@ namespace BotRace.Game.Implementation
 
             throw new InvalidOperationException();
         }
+
+        public override bool Equals(object obj)
+        {
+            var pos = obj as Position;
+
+            return pos != null &&
+                   (pos.Column == Column && pos.Row == Row);
+        }
+
+        public override int GetHashCode()
+        {
+            return Column ^ Row;
+        }
     }
 }

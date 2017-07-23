@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using BotRace.Game;
 using BotRace.Game.Runtime;
 using BotRace.Game.Runtime.Rules;
@@ -34,10 +33,12 @@ namespace GameImpl.Runtime
         private void SetupGameRules()
         {
             GameStartRules.Add<TurnsAreRandom>()
-                               .Add<EveryoneStartsAtMazeHome>();
+                          .Add<EveryoneStartsAtMazeHome>();
 
             TurnRules.Add<MovingThroughAWallIsInvalid>()
                      .Add<Move>();
+
+            TurnEndRules.Add<GameIsCompletedWhenBotsInTheEndCell>();
         }
 
         #endregion
@@ -60,7 +61,7 @@ namespace GameImpl.Runtime
 
                 status = TurnEndRules.Eval(status);
 
-            } while (!(status is EndStatus));
+            } while (!(status is FinalStatus));
 
             EndGame();
         }
@@ -73,14 +74,15 @@ namespace GameImpl.Runtime
 
             var actionResponse = TurnRules.Eval(status, action);
 
-            //bot.PlayResult(actionResponse);
+            bot.PlayResult(actionResponse);
         }
 
         private void EndGame()
         {
-            throw new NotImplementedException();
+            foreach (var bot in status.Bots)
+            {
+                bot.GameResult(status);
+            }
         }
-
-        
     }
 }

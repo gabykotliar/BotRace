@@ -3,7 +3,13 @@ using BotRace.Game;
 using BotRace.Game.Implementation;
 using BotRace.Game.Runtime;
 using IBot = BotRace.Game.Bot;
+using IPosition = BotRace.Game.Position;
+using Position = BotRace.Game.Implementation.Position;
 using Xunit;
+using System.Collections.Generic;
+using Moq;
+using System.Linq;
+using System.Linq.Expressions;
 
 namespace Test.CSharp.Game
 {
@@ -48,7 +54,7 @@ namespace Test.CSharp.Game
         }
 
         [Fact]
-        public void ANeedsToBeSetupBeforePlayed()
+        public void AGameNeedsToBeSetupBeforePlayed()
         {
             var g = CreateStubGame();
 
@@ -58,22 +64,52 @@ namespace Test.CSharp.Game
         [Fact]
         public void GameIntegrationTest()
         {
-            MazeGenerator mg = new RecursiveBacktrackingMazeGenerator();
+            #region Setup bot mock
 
-            var maze = mg.Create(2);
+            var bot = new Mock<IBot>();
+            
+            bot.Setup(b => b.Play())
+               .Returns(new Queue<Movement>(new[] 
+                            {
+                                new Movement(Direction.E),
+                                new Movement(Direction.S)
+                            }
+                        ).Dequeue)
+                .Verifiable();
 
-            var bot = new Moq.Mock<IBot>();
-            bot.Setup(b => b.Play()).Returns(new Movement(Direction.E));
+            // alternaltive setup to the queue
+            // bot.SetupSequence(b => b.Play())
+            //        .Returns(new Movement(Direction.E))
+            //        .Returns(new Movement(Direction.S));
 
-            var bots = new[] { bot.Object };
+            bot.Setup(b => b.PlayResult(It.IsAny<ActionResult>()));
 
-            var gameConfig = new GameConfig(bots, maze);
+            Expression<Action<IBot>> endGameCall = b => b.GameResult(
+                                                                    It.Is<FinalStatus>(s => s.Winners.Contains(bot.Object))
+                                                                    );
 
-            var g = factory.CreateGame(gameConfig);
+            bot.Setup(endGameCall).Verifiable();
 
-            g.Setup();
+            #endregion
 
-            g.Play();
+            var gameConfig = new GameConfig(new[] { bot.Object }, GetMaze());
+
+            var game = factory.CreateGame(gameConfig);
+            game.Setup();
+            game.Play();
+
+            bot.Verify(b => b.Play(), Times.Exactly(2));
+            bot.Verify(endGameCall);
+        }
+
+        public BotRace.Game.Maze GetMaze()
+        {
+            var maze = BotRace.Game.Implementation.Maze.ClosedGrid(2);
+
+            maze.Carve(new Position(0, 0), Direction.E);
+            maze.Carve(new Position(0, 1), Direction.S);
+
+            return maze;
         }
     }
 }

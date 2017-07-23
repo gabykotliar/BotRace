@@ -73,7 +73,7 @@ namespace BotRace.Game.Implementation
         {
             get
             {
-                return new Position(Height, Width);
+                return new Position(Height - 1, Width - 1);
             }
         }
 

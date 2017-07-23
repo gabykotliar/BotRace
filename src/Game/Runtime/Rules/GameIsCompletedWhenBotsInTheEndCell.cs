@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 
 namespace BotRace.Game.Runtime.Rules
 {
@@ -8,7 +9,17 @@ namespace BotRace.Game.Runtime.Rules
 
         public override GameStatus Evaluate(GameStatus status)
         {
-            return new EndStatus(status);
+            var winners = status.Bots.Where(b => status.Positions[b].Equals(status.Maze.Exit));
+
+            if (winners.Any())
+            {
+                return new FinalStatus(status)
+                {
+                    Winners = winners                       
+                };
+            }
+
+            return status;
         }
     }
 }
