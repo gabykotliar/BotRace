@@ -58,20 +58,10 @@ namespace Test.CSharp.Game
             #region Setup bot mock
 
             var bot = new Mock<IBot>();
-            
-            bot.Setup(b => b.Play())
-               .Returns(new Queue<Movement>(new[] 
-                            {
-                                new Movement(Direction.E),
-                                new Movement(Direction.S)
-                            }
-                        ).Dequeue)
-                .Verifiable();
 
-            // alternaltive setup to the queue
-            // bot.SetupSequence(b => b.Play())
-            //        .Returns(new Movement(Direction.E))
-            //        .Returns(new Movement(Direction.S));
+            bot.SetupSequence(b => b.Play())
+                   .Returns(new Movement(Direction.E))
+                   .Returns(new Movement(Direction.S));
 
             bot.Setup(b => b.PlayResult(It.IsAny<ActionResult>()));
 
