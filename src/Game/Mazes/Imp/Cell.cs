@@ -1,10 +1,8 @@
-﻿using System.Collections.Specialized;
-
-namespace BotRace.Game.Implementation
+﻿namespace BotRace.Game.Mazes.Imp
 {
     public class Cell : ICell
     {
-        private BitVector32 walls;
+        private readonly BitVector32 walls;
 
         public Cell()
         {

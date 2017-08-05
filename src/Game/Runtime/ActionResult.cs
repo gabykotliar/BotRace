@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace BotRace.Game.Runtime
+﻿namespace BotRace.Game.Runtime
 {
     public class ActionResult
     {

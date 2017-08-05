@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using BotRace.Game.Mazes;
 
 namespace BotRace.Game.Runtime
 {

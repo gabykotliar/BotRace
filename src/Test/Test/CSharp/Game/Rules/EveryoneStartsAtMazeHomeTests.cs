@@ -1,12 +1,10 @@
 ﻿using System.Collections.Generic;
-
-using BotRace.Game.Implementation;
+using BotRace.Game.Mazes.Imp;
+using BotRace.Game.Rules;
 using BotRace.Game.Runtime;
-using BotRace.Game.Runtime.Rules;
-
 using Xunit;
 
-using IMaze = BotRace.Game.IMaze;
+using IMaze = BotRace.Game.Mazes.IMaze;
 using IBot = BotRace.Game.IBot;
 
 namespace Test.CSharp.Game.Rules

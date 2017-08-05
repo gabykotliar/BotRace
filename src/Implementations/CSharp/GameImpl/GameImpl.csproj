@@ -8,4 +8,8 @@
     <ProjectReference Include="..\..\..\Game\Game.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Runtime\" />
+  </ItemGroup>
+
 </Project>

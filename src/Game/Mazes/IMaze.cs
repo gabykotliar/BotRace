@@ -1,4 +1,4 @@
-﻿namespace BotRace.Game
+﻿namespace BotRace.Game.Mazes
 {
     public interface IMaze
     {

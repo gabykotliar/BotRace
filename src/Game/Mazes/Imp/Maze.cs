@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Text;
 
-namespace BotRace.Game.Implementation
+namespace BotRace.Game.Mazes.Imp
 {
     public class Maze : IMaze
     {

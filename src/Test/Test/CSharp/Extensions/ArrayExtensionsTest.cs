@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using Xunit;
 
 using BotRace.Game;
-using BotRace.Game.Implementation.Extensions;
+using BotRace.Game.Mazes.Imp;
 
 namespace BotRace.Test.CSharp.Extensions
 {

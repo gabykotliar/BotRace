@@ -2,6 +2,8 @@
 using System.Text;
 
 using BotRace.Game;
+using BotRace.Game.Mazes;
+using BotRace.Game.Mazes.Imp;
 
 namespace BotRace.Test
 {
@@ -22,7 +24,7 @@ namespace BotRace.Test
 
                 for (int column = 0; column < width; column++)
                 {
-                    var cell = maze.CellAt(new Game.Implementation.Position(row, column));
+                    var cell = maze.CellAt(new Position(row, column));
                     graph.Append(cell.HasWall(Direction.S) ? "_" : " ");
                     graph.Append(cell.HasWall(Direction.E) ? "|" : " ");
                 }

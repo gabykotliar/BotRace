@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Linq;
 
-namespace BotRace.Game.Implementation.Extensions
+namespace BotRace.Game.Mazes.Imp
 {
     internal static class ArrayExtensions
     {

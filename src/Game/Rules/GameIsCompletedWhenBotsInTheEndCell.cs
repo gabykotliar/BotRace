@@ -1,7 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using BotRace.Game.Runtime;
 
-namespace BotRace.Game.Runtime.Rules
+namespace BotRace.Game.Rules
 {
     public class GameIsCompletedWhenBotsInTheEndCell : StageRule
     {

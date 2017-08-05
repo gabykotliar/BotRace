@@ -1,15 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using BotRace.Game;
+﻿using BotRace.Game;
+using BotRace.Game.Mazes.Imp;
 using BotRace.Game.Runtime;
+
 using Xunit;
 
 namespace Test.CSharp
 {
     public class FactoryTests
     {
-        IFactory factory = new GameImpl.Factory();
+        IFactory factory = new Factory(new RecursiveBacktrackingMazeGenerator());
 
         [Fact]
         public void ICanCreateAGame()

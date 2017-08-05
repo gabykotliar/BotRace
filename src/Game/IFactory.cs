@@ -1,10 +1,11 @@
-﻿using BotRace.Game.Runtime;
+﻿using BotRace.Game.Mazes;
+using BotRace.Game.Runtime;
 
 namespace BotRace.Game
 {
     public interface IFactory
     {
-        Runtime.IGame CreateGame(GameConfig config);
+        IGame CreateGame(GameConfig config);
 
         IMaze CreateMaze(int size);
     }

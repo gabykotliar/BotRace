@@ -1,8 +1,8 @@
 ﻿using System;
 
-namespace BotRace.Game.Implementation
+namespace BotRace.Game.Mazes.Imp
 {
-    public class Position : BotRace.Game.IPosition
+    public class Position : IPosition
     {
         public Position(int row, int column)
         {

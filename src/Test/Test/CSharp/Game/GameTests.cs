@@ -1,10 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
 
 using BotRace.Game;
-using BotRace.Game.Implementation;
+using BotRace.Game.Mazes;
+using BotRace.Game.Mazes.Imp;
 using BotRace.Game.Runtime;
 
 using Moq;
@@ -15,7 +15,7 @@ namespace Test.CSharp.Game
 {
     public class GameTests
     {
-        readonly IFactory factory = new GameImpl.Factory();
+        readonly IFactory factory = new Factory(new RecursiveBacktrackingMazeGenerator());
 
         private IGame CreateStubGame()
         {

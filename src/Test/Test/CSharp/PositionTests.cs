@@ -1,6 +1,6 @@
 ﻿using BotRace.Game;
 using Xunit;
-using Position = BotRace.Game.Implementation.Position;
+using Position = BotRace.Game.Mazes.Imp.Position;
 
 namespace BotRace.Test.CSharp
 {

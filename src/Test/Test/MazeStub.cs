@@ -1,5 +1,6 @@
 ﻿using System;
 using BotRace.Game;
+using BotRace.Game.Mazes;
 
 namespace Test
 {

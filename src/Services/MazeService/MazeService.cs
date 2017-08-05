@@ -7,9 +7,9 @@ using Microsoft.ServiceFabric.Services.Runtime;
 using Microsoft.ServiceFabric.Services.Remoting.Runtime;
 
 using BotRace.Services.Interfaces;
-
-using BotRace.Game.Implementation;
 using BotRace.Game;
+using BotRace.Game.Mazes;
+using BotRace.Game.Mazes.Imp;
 
 namespace BotRace.Services.MazeService
 {

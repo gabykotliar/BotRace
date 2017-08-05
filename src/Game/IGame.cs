@@ -1,4 +1,4 @@
-﻿namespace BotRace.Game.Runtime
+﻿namespace BotRace.Game
 {
     public interface IGame
     {

@@ -1,21 +1,19 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26430.14
+VisualStudioVersion = 15.0.26430.12
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Implementations", "Implementations", "{E88E43DB-3AEE-4AB5-9DBF-9E9B6D49F60F}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "CSharp", "CSharp", "{3512A9F5-DB35-4A42-8FB0-C072201A8BC8}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "FSharp", "FSharp", "{54D2B00A-D018-491D-83F7-CFEE803EBD64}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Test", "Test", "{12D787D4-A4FA-4DA3-BC61-356C1543F76A}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Game", "Game\Game.csproj", "{FD88D68A-1F5A-4AB2-BF1B-8F07FABD7CDA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GameImpl", "Implementations\CSharp\GameImpl\GameImpl.csproj", "{991877B5-CCB0-4F28-B043-707E86218828}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GameImpl", "Implementations\CSharp\GameImpl\GameImpl.csproj", "{991877B5-CCB0-4F28-B043-707E86218828}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Test", "Test\Test\Test.csproj", "{2D7EF688-AF8E-4CEC-8DD0-FBD0E48D2CA3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Test", "Test\Test\Test.csproj", "{2D7EF688-AF8E-4CEC-8DD0-FBD0E48D2CA3}"
 EndProject
 Project("{A07B5EB6-E848-4116-A8D0-A826331D98C6}") = "BotRaceServices", "BotRaceServices\BotRaceServices.sfproj", "{E5A8B323-EA62-4378-9574-ACF0AAADBF1D}"
 EndProject
@@ -23,9 +21,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Services", "Services", "{CC
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MazeService", "Services\MazeService\MazeService.csproj", "{A81B08CD-4028-4B62-88FD-17ADB463EE36}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Api", "Api\Api.csproj", "{6152B5C1-29D8-488C-A7D3-C25D7CAE20A3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Api", "Api\Api.csproj", "{6152B5C1-29D8-488C-A7D3-C25D7CAE20A3}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Interfaces", "Services\Interfaces\Interfaces.csproj", "{0E3F2234-8BF0-4C2C-A83E-819C913BC8AC}"
+EndProject
+Project("{F088123C-0E9E-452A-89E6-6BA2F21D5CAC}") = "DependencyValidation1", "DependencyValidation1\DependencyValidation1.modelproj", "{56940E7D-EA73-4596-8068-72A46928050A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -89,13 +89,20 @@ Global
 		{0E3F2234-8BF0-4C2C-A83E-819C913BC8AC}.Release|Any CPU.Build.0 = Release|Any CPU
 		{0E3F2234-8BF0-4C2C-A83E-819C913BC8AC}.Release|x64.ActiveCfg = Release|Any CPU
 		{0E3F2234-8BF0-4C2C-A83E-819C913BC8AC}.Release|x64.Build.0 = Release|Any CPU
+		{56940E7D-EA73-4596-8068-72A46928050A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{56940E7D-EA73-4596-8068-72A46928050A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{56940E7D-EA73-4596-8068-72A46928050A}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{56940E7D-EA73-4596-8068-72A46928050A}.Debug|x64.Build.0 = Debug|Any CPU
+		{56940E7D-EA73-4596-8068-72A46928050A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{56940E7D-EA73-4596-8068-72A46928050A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{56940E7D-EA73-4596-8068-72A46928050A}.Release|x64.ActiveCfg = Release|Any CPU
+		{56940E7D-EA73-4596-8068-72A46928050A}.Release|x64.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{3512A9F5-DB35-4A42-8FB0-C072201A8BC8} = {E88E43DB-3AEE-4AB5-9DBF-9E9B6D49F60F}
-		{54D2B00A-D018-491D-83F7-CFEE803EBD64} = {E88E43DB-3AEE-4AB5-9DBF-9E9B6D49F60F}
 		{991877B5-CCB0-4F28-B043-707E86218828} = {3512A9F5-DB35-4A42-8FB0-C072201A8BC8}
 		{2D7EF688-AF8E-4CEC-8DD0-FBD0E48D2CA3} = {12D787D4-A4FA-4DA3-BC61-356C1543F76A}
 		{A81B08CD-4028-4B62-88FD-17ADB463EE36} = {CC819DDA-54C1-450F-BCE5-135C19C66CA5}

@@ -1,4 +1,4 @@
-﻿namespace BotRace.Game.Implementation
+﻿namespace BotRace.Game.Mazes.Imp
 {
     internal class BitVector32
     {
