@@ -103,10 +103,6 @@
       <Project>{fd88d68a-1f5a-4ab2-bf1b-8f07fabd7cda}</Project>
       <Name>Game</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\Implementations\CSharp\GameImpl\GameImpl.csproj">
-      <Project>{991877b5-ccb0-4f28-b043-707e86218828}</Project>
-      <Name>GameImpl</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Interfaces\Interfaces.csproj">
       <Project>{0e3f2234-8bf0-4c2c-a83e-819c913bc8ac}</Project>
       <Name>Interfaces</Name>
