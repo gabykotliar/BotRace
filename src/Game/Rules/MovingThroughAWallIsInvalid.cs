@@ -1,4 +1,5 @@
-﻿using BotRace.Game.Runtime;
+﻿using BotRace.Game.Mazes;
+using BotRace.Game.Runtime;
 
 namespace BotRace.Game.Rules
 {
@@ -14,13 +15,25 @@ namespace BotRace.Game.Rules
 
                 if (currentCell.HasWall(action.Movement.Direction))
                 {
-                    return new InvalidAction { Reason = $"You can't move {action.Movement.Speed} in the {action.Movement.Direction} because there is a wall in your way." };
+                    return new ActionResult
+                    {
+                        Status = status,
+                        Events = { new WallHit(action.Movement.Speed, action.Movement.Direction) }
+                    };
                 }
 
                 currentPosition = currentPosition.At(action.Movement.Direction);
             }
 
             return EvaluateNext(status, action);
+        }
+    }
+
+    public class WallHit : Event
+    {
+        public WallHit(int originalSpeed, Direction originalDirection) 
+        {
+            Message = $"You can't move {originalSpeed} in the {originalDirection} because there is a wall in your way.";
         }
     }
 }

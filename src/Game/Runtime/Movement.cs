@@ -1,4 +1,6 @@
-﻿namespace BotRace.Game.Runtime
+﻿using BotRace.Game.Mazes;
+
+namespace BotRace.Game.Runtime
 {
     public class Movement
     {

@@ -1,3 +1,4 @@
+using BotRace.Game.Mazes;
 using BotRace.Game.Runtime;
 
 namespace BotRace.Game.Rules
@@ -15,7 +16,17 @@ namespace BotRace.Game.Rules
 
             status.Positions[action.Bot] = currentPosition;
 
-            return null;
+            return new ActionResult { Status = status, Events = { new PositionChanged(currentPosition) }};
+        }
+    }
+
+    public class PositionChanged : Event
+    {
+        public IPosition NewPosition { get; }
+
+        public PositionChanged(IPosition newPosition)
+        {
+            NewPosition = newPosition;
         }
     }
 }

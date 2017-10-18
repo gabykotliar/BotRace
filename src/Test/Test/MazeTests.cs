@@ -1,5 +1,6 @@
 ﻿using System.Text;
 using BotRace.Game;
+using BotRace.Game.Mazes;
 using BotRace.Game.Mazes.Imp;
 using Xunit;
 

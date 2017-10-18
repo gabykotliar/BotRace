@@ -1,26 +1,21 @@
-﻿using System.Collections.Generic;
-using System.Linq;
+﻿using System.Linq;
+
 using BotRace.Game.Runtime;
 
 namespace BotRace.Game.Rules
 {
     public class GameIsCompletedWhenBotsInTheEndCell : StageRule
     {
-        List<IBot> winners = new List<IBot>();
-
         public override GameStatus Evaluate(GameStatus status)
         {
-            var winners = status.Bots.Where(b => status.Positions[b].Equals(status.Maze.Exit));
+            var botsAtExitCell = status.Bots.Where(b => status.Positions[b].Equals(status.Maze.Exit)).ToList();
 
-            if (winners.Any())
+            if (!botsAtExitCell.Any()) return status;
+
+            return new FinalStatus(status)
             {
-                return new FinalStatus(status)
-                {
-                    Winners = winners                       
-                };
-            }
-
-            return status;
+                Winners = botsAtExitCell
+            };
         }
     }
 }

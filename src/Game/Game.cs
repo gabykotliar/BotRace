@@ -1,17 +1,35 @@
-﻿using BotRace.Game.Rules;
+﻿using System;
+using BotRace.Game.Rules;
 using BotRace.Game.Runtime;
+using Action = BotRace.Game.Runtime.Action;
 
 namespace BotRace.Game
 {
+
+    public class GameEventArgs : EventArgs
+    {
+        public GameEventArgs(GameStatus gameStatus)
+        {
+            GameStatus = gameStatus;
+        }
+
+        public GameStatus GameStatus { get; }
+    }
+
+    public delegate void GameEventHandler(object sender, GameEventArgs a);
+
+
     public class Game : IGame
     {
+        public event GameEventHandler GameEvent;
+
         private GameStatus status;
 
-        private StageRulePipeline GameStartRules { get; } = new StageRulePipeline();
+        internal StageRulePipeline GameStartRules { private get; set; }
 
-        private TurnRulePipeline TurnRules { get; } = new TurnRulePipeline();
+        internal TurnRulePipeline TurnRules { private get; set; }
 
-        private StageRulePipeline TurnEndRules { get; } = new StageRulePipeline();
+        internal StageRulePipeline TurnEndRules { private get; set; }
 
         #region Constructor
 
@@ -28,13 +46,7 @@ namespace BotRace.Game
 
         private void SetupGameRules()
         {
-            GameStartRules.Add<TurnsAreRandom>()
-                          .Add<EveryoneStartsAtMazeHome>();
-
-            TurnRules.Add<MovingThroughAWallIsInvalid>()
-                     .Add<Move>();
-
-            TurnEndRules.Add<GameIsCompletedWhenBotsInTheEndCell>();
+            
         }
 
         #endregion
@@ -48,11 +60,15 @@ namespace BotRace.Game
 
         public void Play()
         {
+            GameEvent?.Invoke(this, new GameEventArgs(status));
+
             do
             {
                 foreach (var bot in status.Bots)
                 {
                     PlayerTurn(bot);
+
+                    GameEvent?.Invoke(this, new GameEventArgs(status));
                 }
 
                 status = TurnEndRules.Eval(status);

@@ -1,4 +1,5 @@
 ﻿using BotRace.Game;
+using BotRace.Game.Mazes;
 using Xunit;
 
 namespace BotRace.Test.CSharp

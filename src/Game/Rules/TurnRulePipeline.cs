@@ -12,7 +12,7 @@ namespace BotRace.Game.Rules
         {
             var rule = new T();
 
-            if (Enumerable.Any<TurnRule>(rules)) Enumerable.Last<TurnRule>(rules).Next = rule;
+            if (rules.Any()) rules.Last().Next = rule;
 
             rules.Add(rule);
 
@@ -21,9 +21,9 @@ namespace BotRace.Game.Rules
 
         public ActionResult Eval(GameStatus status, Action action)
         {
-            if (!Enumerable.Any<TurnRule>(rules)) return new ActionResult { Status = status };
+            if (!rules.Any()) return new ActionResult { Status = status };
 
-            return Enumerable.First<TurnRule>(rules).Evaluate(status, action);
+            return rules.First().Evaluate(status, action);
         }
     }
 }

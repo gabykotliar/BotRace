@@ -14,7 +14,7 @@ namespace BotRace.Game.Mazes.Imp
 
         public int Row { get; private set; }
 
-        public BotRace.Game.IPosition At(Direction direction)
+        public IPosition At(Direction direction)
         {
             switch (direction)
             {

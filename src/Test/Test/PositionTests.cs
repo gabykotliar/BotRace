@@ -1,4 +1,5 @@
 ﻿using BotRace.Game;
+using BotRace.Game.Mazes;
 using Xunit;
 using Position = BotRace.Game.Mazes.Imp.Position;
 

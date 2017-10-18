@@ -1,4 +1,5 @@
 ﻿using BotRace.Game.Mazes;
+using BotRace.Game.Rules;
 using BotRace.Game.Runtime;
 
 namespace BotRace.Game
@@ -14,7 +15,20 @@ namespace BotRace.Game
 
         public IGame CreateGame(GameConfig config)
         {
-            return new Game(config);
+            var game = new Game(config);
+
+            game.GameStartRules = new StageRulePipeline()
+                .Add<TurnsAreRandom>()
+                .Add<EveryoneStartsAtMazeHome>(); 
+
+            game.TurnRules = new TurnRulePipeline()
+                .Add<MovingThroughAWallIsInvalid>()
+                .Add<Move>();
+
+            game.TurnEndRules = new StageRulePipeline()
+                .Add<GameIsCompletedWhenBotsInTheEndCell>();
+
+            return game;
         }
 
         public IMaze CreateMaze(int size)
